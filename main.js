@@ -1,14 +1,25 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-// we will create BMI calculator and do addition, subtraction, multiplication, division, exponentation and modulus
-let weight = 80; //in kgs
-let height = 2.50; //in meters
-let bmi = weight / (height * height);
-console.log(`Abdullah, your BMI is ${bmi}`);
-let weightOfBox = 50;
-let numOfPiecesInBox = 12;
-let soldOut = 3;
-let weightOfEachPiece = weightOfBox / numOfPiecesInBox;
-let remainingPiecesInBox = numOfPiecesInBox - soldOut;
-console.log(`The weight of each piece in box is ${weightOfEachPiece}`);
-console.log(`the remaining pieces are ${remainingPiecesInBox}`);
+// creating a simple calculator using inquirer
+import inquirer from "inquirer";
+const answer = await inquirer.prompt([
+    { message: "Enter first number", type: "number", name: "firstNumber" },
+    { message: "Enter second number", type: "number", name: "secondNumber" },
+    {
+        message: "Select one of the operator to perform action",
+        type: "list",
+        name: "operator",
+        choices: ["Addition", "Subtraction", "Multiplication", "Division"],
+    },
+]);
+// conditional statement for taking output
+if (answer.operator === "Addition") {
+    console.log("Your value is " + (answer.firstNumber + answer.secondNumber));
+}
+else if (answer.operator === "Subtraction") {
+    console.log("Your value is " + (answer.firstNumber - answer.secondNumber));
+}
+else if (answer.operator === "Multiplication") {
+    console.log("Your value is " + answer.firstNumber * answer.secondNumber);
+}
+else if (answer.operator === "Division") {
+    console.log("Your value is " + answer.firstNumber / answer.secondNumber);
+}
